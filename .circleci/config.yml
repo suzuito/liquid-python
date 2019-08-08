@@ -52,6 +52,7 @@ jobs:
           name: update tag
           command: |
             cat ./liquidcli.egg-info/PKG-INFO | grep ^Version | cut -f2 -d':' >> /tmp/v.txt
+            echo "Push tag v`cat /tmp/v.txt`"
             git tag v`cat /tmp/v.txt` && git push origin v`cat /tmp/v.txt`
 
       # - save_cache:
