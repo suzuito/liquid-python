@@ -42,6 +42,7 @@ jobs:
         environment:
           PIPENV_VENV_IN_PROJECT: 'true'
     steps:
+      - checkout
       - run:
           name: init .pypirc
           command: |
