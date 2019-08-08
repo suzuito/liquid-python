@@ -11,9 +11,9 @@ jobs:
     steps:
       - checkout
 
-      - restore_cache:
-          keys:
-            - deps-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      # - restore_cache:
+      #     keys:
+      #       - deps-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
 
       - run:
           name: install dependencies
@@ -29,8 +29,6 @@ jobs:
           key: deps-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
             - ".venv"
-            - "/usr/local/bin"
-            - "/usr/local/lib/python3.7/site-packages"
 
       # run tests!
       # this example uses Django's built-in test-runner
