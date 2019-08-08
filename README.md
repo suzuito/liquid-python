@@ -4,6 +4,8 @@
 
 Client library for [Liquid API](https://www.liquid.com/).
 
+Liquidは仮想通貨の取引所です。
+
 ## Usage
 
 ### Insatall
@@ -15,7 +17,7 @@ pip install liquid-python
 ### Run
 
 ```bash
-
+TBD
 ```
 
 ## Development
@@ -29,3 +31,4 @@ pipenv python run main.py
 
 ## Contribution
 
+TBD
