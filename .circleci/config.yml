@@ -39,10 +39,9 @@ jobs:
       - run:
           name: check version
           command: |
-            git describe --tags >> /tmp/cur.v.txt
+            git describe --tags | cut -f1 -d'-' >> /tmp/cur.v.txt
             cat ./liquidcli.egg-info/PKG-INFO | grep ^Version | cut -f2 -d':' | sed 's/ *//g' >> /tmp/next.v.txt
-            diff /tmp/cur.v.txt /tmp/next.v.txt
-            test $? -ne 0
+            test `cat /tmp/cur.v.txt` != `cat /tmp/next.v.txt`
 
   publish:
     docker:
