@@ -30,12 +30,16 @@ jobs:
           command: |
             pipenv run python setup.py sdist
             pipenv install ./dist/*.tar.gz
-            pipenv run pytest -v ./tests/
+            pipenv run pytest --cov=liquidcli --cov-report=html -v ./tests
 
       - save_cache:
           key: deps-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
             - ".venv"
+      
+      - store_artifacts:
+          path: htmlcov
+          destination: htmlcov
 
       # run tests!
       # this example uses Django's built-in test-runner
