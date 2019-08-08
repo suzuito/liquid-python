@@ -32,26 +32,11 @@ jobs:
             pipenv install ./dist/*.tar.gz
             pipenv run pytest --cov=liquidcli --cov-report=html -v ./tests
 
-      - save_cache:
-          key: deps-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ".venv"
+      # - save_cache:
+      #     key: deps-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      #     paths:
+      #       - ".venv"
       
       - store_artifacts:
           path: htmlcov
           destination: htmlcov
-
-      # run tests!
-      # this example uses Django's built-in test-runner
-      # other common Python testing frameworks include pytest and nose
-      # https://pytest.org
-      # https://nose.readthedocs.io
-      # - run:
-      #     name: run tests
-      #     command: |
-      #       . venv/bin/activate
-      #       python manage.py test
-
-      # - store_artifacts:
-      #     path: test-reports
-      #     destination: test-reports
