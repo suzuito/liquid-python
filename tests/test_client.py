@@ -1,4 +1,5 @@
 import unittest
+from main import client
 
 
 class Test_A(unittest.TestCase):
@@ -10,6 +11,7 @@ class Test_A(unittest.TestCase):
 
     def test_aaa(self):
         self.assertEqual(2, 2)
+        client.Client()
         pass
 
 
