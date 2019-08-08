@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0f8b86d418657b3c1deee3a20a54827572febc533f0030aee8d494eeaaaf2972"
+            "sha256": "7f2b7f95505f0063f3168641af0e292e045a1a62fa7b752d98dd82a350aa2676"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -36,9 +36,6 @@
                 "sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"
             ],
             "version": "==2.8"
-        },
-        "liquidcli": {
-            "path": "./dist/liquidcli-0.0.1.tar.gz"
         },
         "pyjwt": {
             "hashes": [
