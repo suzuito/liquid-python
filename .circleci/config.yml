@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.4
+        environment:
+          PIPENV_VENV_IN_PROJECT: 'true'
 
     working_directory: ~/repo
 
