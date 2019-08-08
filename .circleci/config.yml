@@ -37,11 +37,12 @@ jobs:
           destination: htmlcov
 
       - run:
-          name: check version
+          name: update version
           command: |
             git describe --tags | cut -f1 -d'-' >> /tmp/cur.v.txt
             cat ./liquidcli.egg-info/PKG-INFO | grep ^Version | cut -f2 -d':' | sed 's/ *//g' >> /tmp/next.v.txt
             test `cat /tmp/cur.v.txt` != `cat /tmp/next.v.txt`
+            echo "Version `cat /tmp/cur.v.txt` to `cat /tmp/next.v.txt`"
 
   publish:
     docker:
