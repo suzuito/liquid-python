@@ -1,5 +1,7 @@
 # liquid-python
 
+[![CircleCI](https://circleci.com/gh/suzuito/liquid-python.svg?style=svg)](https://circleci.com/gh/suzuito/liquid-python)
+
 Client library for [Liquid API](https://www.liquid.com/).
 
 ## Usage
