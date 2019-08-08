@@ -58,7 +58,10 @@ pip install liquid-python
 ### Run
 
 ```bash
+# Execute unit test
 pipenv run python -m pytest --cov=liquidcli --cov-report=html --cov-report=term ./tests
+# Check coverage in HTML
+open htmlcov/index.html
 ```
 
 ## Development
