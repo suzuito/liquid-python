@@ -20,7 +20,7 @@ pip install liquid-python
 
 ```bash
 # Installation of dependencies
-pipenv install
+pipenv install --dev
 # Run
 pipenv python run main.py
 ```

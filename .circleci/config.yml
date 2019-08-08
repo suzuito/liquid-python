@@ -18,7 +18,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            pipenv install
+            pipenv install --dev
 
       - run:
           name: pylint
