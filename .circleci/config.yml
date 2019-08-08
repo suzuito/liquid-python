@@ -39,6 +39,7 @@ jobs:
       - run:
           name: publish
           command: |
+            pip install 'twine>=1.5.0'
             twine upload dist/*
 
       # - save_cache:
