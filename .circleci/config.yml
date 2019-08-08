@@ -46,8 +46,7 @@ jobs:
       - run:
           name: publish
           command: |
-            pip install 'twine>=1.5.0'
-            twine upload dist/*
+            pipenv run twine upload dist/*
 
       # - save_cache:
       #     key: deps-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
