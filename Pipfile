@@ -12,6 +12,7 @@ pytest-cov = "*"
 [packages]
 requests = "*"
 pyjwt = "*"
+liquidcli = {path = "./dist/liquidcli-0.0.1.tar.gz"}
 
 [requires]
 python_version = "3.7"

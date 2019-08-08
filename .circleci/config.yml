@@ -28,8 +28,8 @@ jobs:
       - run:
           name: pytest
           command: |
-            pwd
-            ls -la
+            pipenv run python setup.py sdist
+            pipenv install ./dist/*.tar.gz
             pipenv run pytest -v ./tests/
 
       - save_cache:

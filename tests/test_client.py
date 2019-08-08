@@ -1,5 +1,5 @@
 import unittest
-from main import client
+from liquidcli import client
 
 
 class Test_A(unittest.TestCase):
@@ -13,7 +13,3 @@ class Test_A(unittest.TestCase):
         self.assertEqual(2, 2)
         client.Client()
         pass
-
-
-if __name__ == '__main__':
-    unittest.main()
