@@ -48,6 +48,11 @@ jobs:
           command: |
             pipenv run twine upload dist/*
 
+      - run:
+          name: update tag
+          command: |
+            cat ./liquidcli.egg-info/PKG-INFO | grep ^Version | cut -f2 -d':'
+
       # - save_cache:
       #     key: deps-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       #     paths:

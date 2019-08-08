@@ -1,11 +1,18 @@
 import setuptools
+import os
+
+here = os.path.abspath(os.path.dirname(__file__))
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+about = {}
+with open(os.path.join(here, 'liquidcli', '__version__.py'), 'r') as f:
+    exec(f.read(), about)
+
 setuptools.setup(
     name="liquidcli",
-    version="0.0.1",
+    version=about['__version__'],
     author="Suzuito",
     author_email="suzuito3@gmail.com",
     description="A small example package",
