@@ -28,6 +28,8 @@ jobs:
       - run:
           name: pytest
           command: |
+            pwd
+            ls -la
             pipenv run pytest -v ./tests/
 
       - save_cache:
