@@ -1,6 +1,6 @@
 # liquid-python
 
-[![CircleCI](https://circleci.com/gh/suzuito/liquid-python.svg?style=svg)](https://circleci.com/gh/suzuito/liquid-python)
+[![CircleCI](https://circleci.com/gh/suzuito/liquid-python.svg?style=svg)](https://circleci.com/gh/suzuito/liquid-python) ![PyPI](https://img.shields.io/pypi/v/liquidcli) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/liquidcli)
 
 Client library for [Liquid](https://www.liquid.com/).
 Liquid API reference is [here](https://developers.liquid.com).
