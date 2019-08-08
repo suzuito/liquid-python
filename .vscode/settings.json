@@ -2,4 +2,10 @@
     "python.pythonPath": "/Users/suzukitaito/.local/share/virtualenvs/liquid-python-N9rOg8V2/bin/python",
     "editor.formatOnSave": true,
     "python.linting.pylintEnabled": true,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
 }
