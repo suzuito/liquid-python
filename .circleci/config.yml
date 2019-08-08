@@ -41,7 +41,8 @@ jobs:
           command: |
             git describe --tags >> /tmp/cur.v.txt
             cat ./liquidcli.egg-info/PKG-INFO | grep ^Version | cut -f2 -d':' | sed 's/ *//g' >> /tmp/next.v.txt
-            if [ !`diff /tmp/cur.v.txt /tmp/next.v.txt` ]; then echo 'Update version'; false; fi
+            diff /tmp/cur.v.txt /tmp/next.v.txt
+            test $? -ne 0
 
   publish:
     docker:
