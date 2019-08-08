@@ -5,6 +5,9 @@
 Client library for [Liquid](https://www.liquid.com/).
 Liquid API reference is [here](https://developers.liquid.com).
 
+<details><summary>Supported API</summary>
+<p>
+
 |End point|Impl|Unit test|
 |---|----|----|
 |Public|||
@@ -42,6 +45,8 @@ Liquid API reference is [here](https://developers.liquid.com).
 |`GET /trades/:id/loans`|||
 |...etc...|||
 
+</p></details>
+
 ## Usage
 
 ### Insatall
@@ -53,7 +58,7 @@ pip install liquid-python
 ### Run
 
 ```bash
-TBD
+pipenv run python -m pytest --cov=liquidcli --cov-report=html --cov-report=term ./tests
 ```
 
 ## Development
