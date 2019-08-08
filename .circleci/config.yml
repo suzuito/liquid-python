@@ -37,6 +37,13 @@ jobs:
           destination: htmlcov
 
       - run:
+          name: init .pypirc
+          command: |
+            echo -e '[pypi]' >> ~/.pypirc
+            echo -e 'username = suzuito' >> ~/.pypirc
+            echo -e 'password = $PYPI_PASSWORD' >> ~/.pypirc
+
+      - run:
           name: publish
           command: |
             pip install 'twine>=1.5.0'
