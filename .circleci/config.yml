@@ -36,6 +36,13 @@ jobs:
           path: htmlcov
           destination: htmlcov
 
+      - run:
+          name: check version
+          command: |
+            git describe --tags >> /tmp/cur.v.txt
+            cat ./liquidcli.egg-info/PKG-INFO | grep ^Version | cut -f2 -d':' | sed 's/ *//g' >> /tmp/next.v.txt
+            if [ !`diff /tmp/cur.v.txt /tmp/next.v.txt` ]; then echo 'Update version'; false; fi
+
   publish:
     docker:
       - image: circleci/python:3.7.4
@@ -60,7 +67,7 @@ jobs:
       - run:
           name: update tag
           command: |
-            cat ./liquidcli.egg-info/PKG-INFO | grep ^Version | cut -f2 -d':' >> /tmp/v.txt
+            cat ./liquidcli.egg-info/PKG-INFO | grep ^Version | cut -f2 -d':' | sed 's/ *//g' >> /tmp/v.txt
             echo "Push tag `cat /tmp/v.txt`"
             git tag `cat /tmp/v.txt` && git push origin `cat /tmp/v.txt`
 
