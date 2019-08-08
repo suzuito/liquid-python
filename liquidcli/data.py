@@ -6,7 +6,6 @@ class Execution(object):
         self.price = price
         self.takerSide = takerSide
         self.createdAt = createdAt
-        pass
 
 
 class FiatAccount(object):
@@ -19,4 +18,3 @@ class Page(object):
         self.currentPage = currentPage
         self.totalPages = totalPages
         self.models = models
-        pass

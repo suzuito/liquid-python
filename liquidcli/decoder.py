@@ -1,5 +1,3 @@
-'''
-'''
 from .data import Page
 
 

@@ -28,15 +28,22 @@ jobs:
       - run:
           name: pytest
           command: |
-            pipenv run python setup.py sdist
+            pipenv run python setup.py sdist bdist_wheel
             pipenv install ./dist/*.tar.gz
             pipenv run pytest --cov=liquidcli --cov-report=html -v ./tests
+
+      - store_artifacts:
+          path: htmlcov
+          destination: htmlcov
+
+      - run:
+          name: publish
+          command: |
+            twine upload dist/*
 
       # - save_cache:
       #     key: deps-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       #     paths:
       #       - ".venv"
       
-      - store_artifacts:
-          path: htmlcov
-          destination: htmlcov
+
