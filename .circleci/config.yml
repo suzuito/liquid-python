@@ -41,7 +41,7 @@ jobs:
           command: |
             echo -e '[pypi]' >> ~/.pypirc
             echo -e 'username = suzuito' >> ~/.pypirc
-            echo -e 'password = $PYPI_PASSWORD' >> ~/.pypirc
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
 
       - run:
           name: publish
