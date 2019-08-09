@@ -25,7 +25,7 @@ Liquid API reference is [here](https://developers.liquid.com).
 |`PUT /orders/:id`||
 |`GET /orders/:id/trades`||
 |`GET /executions/me`||
-|`GET /fiat_accounts`||
+|`GET /fiat_accounts`|o|
 |`POST /fiat_accounts`||
 |`GET /crypto_accounts`||
 |`GET /accounts/balance`||

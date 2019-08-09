@@ -9,8 +9,6 @@ autopep8 = "*"
 pytest = "*"
 pytest-cov = "*"
 twine = "*"
-pytest-subtest = "*"
-pytest-subtests = "*"
 
 [packages]
 requests = "*"
