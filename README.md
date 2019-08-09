@@ -55,15 +55,6 @@ Liquid API reference is [here](https://developers.liquid.com).
 pip install liquid-python
 ```
 
-### Run
-
-```bash
-# Execute unit test
-pipenv run python -m pytest --cov=liquidcli --cov-report=html --cov-report=term ./tests
-# Check coverage in HTML
-open htmlcov/index.html
-```
-
 ## Development
 
 ```bash
@@ -71,6 +62,15 @@ open htmlcov/index.html
 pipenv install --dev
 # Run
 pipenv python run main.py
+```
+
+### Run test
+
+```bash
+# Execute unit test
+pipenv run python -m pytest --cov=liquidcli --cov-report=html --cov-report=term ./tests
+# Check coverage in HTML
+open htmlcov/index.html
 ```
 
 ## Contribution
