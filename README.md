@@ -72,7 +72,3 @@ pipenv run python -m pytest --cov=liquidcli --cov-report=html --cov-report=term 
 # Check coverage in HTML
 open htmlcov/index.html
 ```
-
-## Contribution
-
-TBD
