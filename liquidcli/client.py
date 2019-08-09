@@ -19,16 +19,16 @@ DEFAULT_REQUEST_HEADERS = {
 
 
 class Client(object):
-    def __init__(self, baseUrl: str = BASE_URL, apiTokenId: str = '', apiSecret: str = ''):
+    def __init__(self, baseUrl: str = BASE_URL, apiTokenId: str = '', apiSecret: str = '', noncer=lambda: int(round(time.time() * 1000))):
         self.baseUrl: str = baseUrl
         self.apiTokenId: str = apiTokenId
         self.apiSecret: str = apiSecret
         self.__sess: requests.Session = requests.Session()
-        pass
+        self.noncer = noncer
 
     def __jwt(self, p: str):
         payload = {
-            'nonce': int(round(time.time() * 1000)),
+            'nonce': self.noncer(),
             'token_id': self.apiTokenId,
             'path': p,
         }
@@ -52,9 +52,10 @@ class Client(object):
                   stream=None, verify=None, cert=None, json=None):
         res: requests.Response = self.__sess.request(
             method, '{0}{1}'.format(self.baseUrl, p),
-            params, data, headers, cookies, files,
-            auth, timeout, allow_redirects, proxies, hooks, stream,
-            verify, cert, json,
+            params=params, data=data, headers=headers, cookies=cookies, files=files,
+            auth=auth, timeout=timeout, allow_redirects=allow_redirects,
+            proxies=proxies, hooks=hooks, stream=stream,
+            verify=verify, cert=cert, json=json,
         )
         res.raise_for_status()
         return res.json(object_hook=objectHook)
@@ -63,7 +64,7 @@ class Client(object):
         return self.__request(
             'get', '/executions',
             decoder_Page(Execution),
-            params={'product_id': productId, 'limit': limit},
+            params={'product_id': productId, 'limit': limit, 'page': page},
             headers=DEFAULT_REQUEST_HEADERS,
         )
 
