@@ -26,7 +26,7 @@ def decoder_Page(cls):
     def a(raw: dict):
         decoded = cls()
         if 'models' in raw:
-            decoded = Page()
+            decoded = Page(0, 0, [])
         for key in raw.keys():
             if hasattr(decoded, key):
                 decoded.__setattr__(key, raw.get(key))

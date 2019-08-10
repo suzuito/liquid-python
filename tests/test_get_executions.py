@@ -28,7 +28,7 @@ class TestGetExecutions(TestCase):
                 }
                 ''',
                 'expected': Page(
-                    currentPage=1, totalPages=999,
+                    current_page=1, total_pages=999,
                     models=[
                         Execution(
                             id=100,

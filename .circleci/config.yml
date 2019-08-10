@@ -30,7 +30,7 @@ jobs:
           command: |
             pipenv run python setup.py sdist bdist_wheel
             pipenv install ./dist/*.tar.gz
-            pipenv run pytest --cov=liquidcli --cov-report=html -v ./tests
+            pipenv run python -m pytest --cov=liquidcli --cov-report=html --cov-report=term ./tests
 
       - store_artifacts:
           path: htmlcov
