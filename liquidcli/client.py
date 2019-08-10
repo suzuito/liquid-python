@@ -68,11 +68,11 @@ class Client(object):
             headers=DEFAULT_REQUEST_HEADERS,
         )
 
-    def getExecutionsByTimestamp(self, productId: int, timestamp: int, limit: int):
+    def getExecutionsByTimestamp(self, currencyPairCode: str, timestamp: int, limit: int):
         return self.__request(
             'get', '/executions',
             decoder_shallowList(Execution),
-            params={'product_id': productId,
+            params={'currency_pair_code': currencyPairCode,
                     'limit': limit, 'timestamp': timestamp},
             headers=DEFAULT_REQUEST_HEADERS,
         )

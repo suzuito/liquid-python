@@ -70,7 +70,7 @@ class TestGetExecutionsByTimestamp(TestCase):
         testCases = [
             {
                 'desc': 'success',
-                'inputProductId': 1, 'inputLimit': 2, 'inputTimestamp': 3,
+                'inputCPair': 'BTCJPY', 'inputLimit': 2, 'inputTimestamp': 3,
                 'resStatus': 200,
                 'resBody': '''
                 [
@@ -100,7 +100,7 @@ class TestGetExecutionsByTimestamp(TestCase):
                     self,
                     'get', '/executions',
                     {
-                        'product_id': tc['inputProductId'],
+                        'currency_pair_code': tc['inputCPair'],
                         'timestamp': tc['inputTimestamp'],
                         'limit': tc['inputLimit'],
                     },
@@ -109,7 +109,7 @@ class TestGetExecutionsByTimestamp(TestCase):
                     tc['resStatus'],
                     tc['resBody'],
                     lambda cli: cli.getExecutionsByTimestamp(
-                        tc['inputProductId'],
+                        tc['inputCPair'],
                         tc['inputTimestamp'],
                         tc['inputLimit'],
                     ),
