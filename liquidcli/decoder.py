@@ -1,8 +1,9 @@
 from .data import Page
 
 
-def decoder_shallowObject(decoded: object):
+def decoder_shallowObject(cls):
     def as_obj(raw: dict):
+        decoded = cls()
         for key in raw.keys():
             if hasattr(decoded, key):
                 decoded.__setattr__(key, raw.get(key))
