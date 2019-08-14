@@ -29,4 +29,23 @@ class FiatAccount:
 class Page:
     current_page: int
     total_pages: int
-    models: List[Execution]
+    models: List[object]
+
+
+@dataclass
+class Order:
+    id: int = 0
+    order_type: str = ''
+    margin_type: str = ''
+    quantity: float = 0
+    disc_quantity: str = ''
+    iceberg_total_quantity: float = 0
+    side: str = ''
+    filled_quantity: float = 0
+    price: float = 0
+    status: str = ''
+    product_id: int = 0
+    product_code: str = ''
+    funding_currency: str = ''
+    currency_pair_code: str = ''
+    order_fee: float = 0

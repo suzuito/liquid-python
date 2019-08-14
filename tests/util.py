@@ -2,11 +2,28 @@ from unittest import TestCase
 from unittest.mock import patch
 from requests import Response, Session
 from liquidcli.client import Client
+from dataclasses import dataclass
+from typing import Callable, Mapping
 
 
 BASE_URL = 'http://example.com'
 API_TOKEN_ID = 'dummyToken'
 API_SECRET = 'dummySecret'
+
+
+@dataclass
+class Case:
+    desc: str
+    reqMethod: str
+    reqPath: str
+    resStatus: int
+    resBody: str
+    runner: Callable[[Client], None]
+    expected: object
+    expectedErrMsg: str = None
+    reqData: object = None
+    reqParams = {}
+    reqHeaders: Mapping[str, str] = None
 
 
 def dummyNuncer():
@@ -38,14 +55,14 @@ def assertHTTPRequest(
                 reqMethod,
                 '{0}{1}'.format(BASE_URL, reqPath),
                 params=reqParams,
-                data=reqData,
+                data=None,
                 headers=reqHeaders,
                 cookies=None, files=None,
                 auth=None, timeout=None,
                 allow_redirects=True, proxies=None,
                 hooks=None, stream=None,
                 verify=None, cert=None,
-                json=None,
+                json=reqData,
             )
             t.assertEqual(
                 expected,
