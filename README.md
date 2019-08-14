@@ -55,6 +55,24 @@ Liquid API reference is [here](https://developers.liquid.com).
 pip install liquid-python
 ```
 
+### Use
+
+```bash
+from liquidcli.client import Client
+from liquidcli.data import Page
+
+cli = Client(
+    baseUrl='https://api.liquid.com',
+    apiTokenId='<API_TOKEN_ID>',
+    apiSecret='<API_SECRET>',
+)
+cli.postOrders(5, 'market', 'buy', 1)
+
+page: Page = cli.getExecutions(5, 1, 1)
+for e in page.models:
+    print(e)
+```
+
 ## Development
 
 ```bash

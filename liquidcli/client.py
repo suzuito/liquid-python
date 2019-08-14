@@ -8,6 +8,8 @@ from .decoder import (
 from .data import (
     FiatAccount,
     Execution,
+    Order,
+    Page,
 )
 
 BASE_URL = 'https://api.liquid.com'
@@ -81,5 +83,67 @@ class Client(object):
         return self.__requestPri(
             'get', '/fiat_accounts',
             decoder_shallowList(FiatAccount),
+            headers=DEFAULT_REQUEST_HEADERS,
+        )
+
+    def getOrders(
+        self,
+        funding_currency: str = '',
+        product_id: int = -1,
+        status: str = '',
+        trading_type: str = '',
+        with_details: int = -1,
+    ) -> Page:
+        params = {}
+        if funding_currency != '':
+            params['funding_currency'] = funding_currency
+        if product_id >= 0:
+            params['product_id'] = product_id
+        if status != '':
+            params['status'] = status
+        if trading_type != '':
+            params['trading_type'] = trading_type
+        if with_details >= 0:
+            params['with_details'] = with_details
+        return self.__requestPri(
+            'get', '/orders',
+            decoder_Page(Order),
+            params=params,
+            headers=DEFAULT_REQUEST_HEADERS,
+        )
+
+    def postOrders(
+        self,
+        product_id: int,
+        order_type: str,
+        side: str,
+        quantity: float,
+        price: float = -1,
+        trading_type: str = '',
+        margin_type: str = '',
+        price_range: str = '',
+    ) -> Order:
+        data = {
+            'order': {
+                'product_id': product_id,
+                'order_type': order_type,
+                'side': side,
+                'quantity': quantity,
+                'price': price,
+            },
+        }
+        if trading_type != '':
+            data['order']['trading_type'] = trading_type
+        if margin_type != '':
+            data['order']['margin_type'] = margin_type
+        if price_range != '':
+            data['order']['price_range'] = price_range
+        if price >= 0:
+            data['order']['price'] = price
+        return self.__requestPri(
+            'post', '/orders',
+            decoder_Page(Order),
+            json=data,
+            params={},
             headers=DEFAULT_REQUEST_HEADERS,
         )
