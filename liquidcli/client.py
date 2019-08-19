@@ -147,3 +147,14 @@ class Client(object):
             params={},
             headers=DEFAULT_REQUEST_HEADERS,
         )
+
+    def cancelOrders(
+        self,
+        id: int,
+    ) -> Order:
+        return self.__requestPri(
+            'put', '/orders/{0}/cancel'.format(id),
+            decoder_Page(Order),
+            params={},
+            headers=DEFAULT_REQUEST_HEADERS,
+        )
