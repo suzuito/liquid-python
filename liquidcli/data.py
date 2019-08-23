@@ -43,9 +43,13 @@ class Order:
     side: str = ''
     filled_quantity: float = 0
     price: float = 0
+    updated_at: int = 0
+    created_at: int = 0
     status: str = ''
     product_id: int = 0
     product_code: str = ''
     funding_currency: str = ''
     currency_pair_code: str = ''
     order_fee: float = 0
+    client_order_id: str = ''
+    executions: List[Execution] = None
