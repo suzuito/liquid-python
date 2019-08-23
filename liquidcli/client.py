@@ -133,6 +133,7 @@ class Client(object):
         trading_type: str = '',
         margin_type: str = '',
         price_range: str = '',
+        client_order_id: str = '',
     ) -> Order:
         data = {
             'order': {
@@ -151,6 +152,8 @@ class Client(object):
             data['order']['price_range'] = price_range
         if price >= 0:
             data['order']['price'] = price
+        if client_order_id != '':
+            data['order']['client_order_id'] = client_order_id
         return self.__requestPri(
             'post', '/orders',
             decoder_Page(Order),
