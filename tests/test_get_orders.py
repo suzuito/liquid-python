@@ -61,3 +61,47 @@ class TestGetOrders(TestCase):
                     tc.expected,
                     tc.expectedErrMsg,
                 )
+
+
+class TestGetOrdersById(TestCase):
+    def test(self):
+        testCases: List[Case] = [
+            Case(
+                desc='success',
+                runner=lambda cli: cli.getOrdersById(1000),
+                reqMethod='get',
+                reqPath='/orders/1000',
+                resStatus=200,
+                resBody='''
+                {
+                    "id": 100,
+                    "order_type": "limit",
+                    "side": "buy",
+                    "price": 100.100,
+                    "quantity": 0.01
+                }
+                ''',
+                expected=Order(
+                    id=100,
+                    order_type='limit',
+                    side='buy',
+                    price=100.100,
+                    quantity=0.01,
+                ),
+            ),
+        ]
+        for tc in testCases:
+            with self.subTest(desc=tc.desc):
+                assertHTTPRequest(
+                    self,
+                    tc.reqMethod,
+                    tc.reqPath,
+                    tc.reqParams,
+                    tc.reqData,
+                    DEFAULT_REQUEST_HEADERS,
+                    tc.resStatus,
+                    tc.resBody,
+                    tc.runner,
+                    tc.expected,
+                    tc.expectedErrMsg,
+                )
