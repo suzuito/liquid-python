@@ -63,8 +63,8 @@ from liquidcli.data import Page
 
 cli = Client(
     baseUrl='https://api.liquid.com',
-    apiTokenId='1092475',
-    apiSecret='jGXZnFLKfWFSAcAxAx4JsU8cMvSa4nXVKrGPMzKwUUy0mSEgrZeXXT/YzcCnhfu4Xt3NbFm33kyXZZX9moEfZQ==',
+    apiTokenId='<API_TOKEN_ID>',
+    apiSecret='<API_SECRET>',
 )
 cli.postOrders(5, 'market', 'buy', 1)
 
