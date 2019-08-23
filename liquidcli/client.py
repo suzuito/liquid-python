@@ -86,6 +86,17 @@ class Client(object):
             headers=DEFAULT_REQUEST_HEADERS,
         )
 
+    def getOrdersById(
+        self,
+        id: int = -1,
+    ) -> Page:
+        return self.__requestPri(
+            'get', '/orders/{}'.format(id),
+            decoder_Page(Order),
+            params={},
+            headers=DEFAULT_REQUEST_HEADERS,
+        )
+
     def getOrders(
         self,
         funding_currency: str = '',
