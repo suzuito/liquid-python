@@ -7,6 +7,7 @@ from .decoder import (
 )
 from .data import (
     FiatAccount,
+    CryptoAccount,
     Execution,
     Order,
     Page,
@@ -83,6 +84,13 @@ class Client(object):
         return self.__requestPri(
             'get', '/fiat_accounts',
             decoder_shallowList(FiatAccount),
+            headers=DEFAULT_REQUEST_HEADERS,
+        )
+
+    def getCryptoAccounts(self):
+        return self.__requestPri(
+            'get', '/crypto_accounts',
+            decoder_shallowList(CryptoAccount),
             headers=DEFAULT_REQUEST_HEADERS,
         )
 

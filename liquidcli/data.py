@@ -26,6 +26,21 @@ class FiatAccount:
 
 
 @dataclass
+class CryptoAccount:
+    id: int = 0
+    balance: float = 0
+    reserved_balance: float = 0
+    address: str = ''
+    currency: str = ''
+    currency_symbol: str = ''
+    pusher_channel: str = ''
+    minimum_withdraw: float = 0
+    lowest_offer_interest_rate: float = 0
+    highest_offer_interest_rate: float = 0
+    currency_type: str = ''
+
+
+@dataclass
 class Page:
     current_page: int
     total_pages: int
