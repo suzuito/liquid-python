@@ -4,10 +4,13 @@ import jwt
 from .decoder import (
     decoder_Page,
     decoder_shallowList,
+    decoder_shallowObject,
 )
 from .data import (
     FiatAccount,
+    AccountDetail,
     CryptoAccount,
+    ReservedBalance,
     Execution,
     Order,
     Page,
@@ -94,6 +97,20 @@ class Client(object):
             headers=DEFAULT_REQUEST_HEADERS,
         )
 
+    def getAccountDetail(self, currency: str):
+        return self.__requestPri(
+            'get', '/accounts/{}'.format(currency),
+            decoder_shallowObject(AccountDetail),
+            headers=DEFAULT_REQUEST_HEADERS,
+        )
+
+    def getReservedBalanceDetails(self, currency: str):
+        return self.__requestPri(
+            'get', '/accounts/{}/reserved_balance_details'.format(currency),
+            decoder_shallowList(ReservedBalance),
+            headers=DEFAULT_REQUEST_HEADERS,
+        )
+
     def getOrdersById(
         self,
         id: int = -1,
@@ -176,7 +193,7 @@ class Client(object):
     ) -> Order:
         return self.__requestPri(
             'put', '/orders/{0}/cancel'.format(id),
-            decoder_Page(Order),
+            decoder_shallowObject(Order),
             params={},
             headers=DEFAULT_REQUEST_HEADERS,
         )

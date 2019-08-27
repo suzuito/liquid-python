@@ -26,6 +26,18 @@ class FiatAccount:
 
 
 @dataclass
+class AccountDetail:
+    id: int = 0
+    currency: str = ''
+    balance: float = 0
+    free_balance: float = 0
+    reserved_balance: float = 0
+    pnl: float = 0
+    margin: float = 0
+    maintenance_margin: float = 0
+
+
+@dataclass
 class CryptoAccount:
     id: int = 0
     balance: float = 0
@@ -38,6 +50,13 @@ class CryptoAccount:
     lowest_offer_interest_rate: float = 0
     highest_offer_interest_rate: float = 0
     currency_type: str = ''
+
+
+@dataclass
+class ReservedBalance:
+    object_type: str = ''
+    object_id: int = -1
+    amount: float = -1
 
 
 @dataclass
