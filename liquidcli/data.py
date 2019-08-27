@@ -72,7 +72,7 @@ class Order:
     order_type: str = ''
     margin_type: str = ''
     quantity: float = 0
-    disc_quantity: str = ''
+    disc_quantity: float = ''
     iceberg_total_quantity: float = 0
     side: str = ''
     filled_quantity: float = 0
